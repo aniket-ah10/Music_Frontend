@@ -2,7 +2,7 @@
 import './App.css'
 import Nav from './components/Nav.jsx';
 import Header from './components/Header.jsx';
-import Player from './components/Player.jsx';
+import Player from './components/player.jsx';
 import {useState} from "react";
 import {MenuContext, MusicListContext, SectionContext,MusicPlayerContext} from "./Hooks/globalHooks.jsx";
 import Home from "./page/home.jsx";
