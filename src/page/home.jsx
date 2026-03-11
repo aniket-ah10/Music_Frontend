@@ -11,7 +11,7 @@ function Home() {
 return(
     <>
         <div className="max-h-screen mx-0 my-0">
-        <div className="flex flex-wrap justify-evenly items-center scroll-smooth m-2">
+        <div className="flex flex-wrap justify-evenly content-evenly gap-x-1 gap-y-3 md:gap-y-5 min-h-full items-center scroll-smooth m-2">
             {musicList?.map((music) => (
                 <MusicCard key={music.id} {...music} />
             ))}
