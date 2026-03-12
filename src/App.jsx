@@ -44,7 +44,7 @@ function App() {
                     <MusicPlayerContext.Provider value={{isPlaying,setIsPlaying,currentIndex,setCurrentIndex}}>
             <div className="grid h-screen ">
                 <Header/>
-                <div className="flex top-14 bottom-18  left-0 fixed w-full ">
+                <div className={`${currentIndex===null?'bottom-0':'bottom-18'} flex top-14 left-0 fixed w-full`}>
                     <Nav/>
                     <div className="flex-1 overflow-y-auto ">
                         <Routes>
