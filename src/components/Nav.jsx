@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import {clsx} from 'clsx';
-import {FaHome} from 'react-icons/fa';
-import { MdOutlineExplore,MdLibraryMusic,MdAdd } from "react-icons/md";
+
+import { MdOutlineExplore,MdLibraryMusic,MdAdd,MdHome } from "react-icons/md";
 import {MenuContext,SectionContext} from "../Hooks/globalHooks.jsx";
 import {useContext} from "react";
 
@@ -11,14 +11,14 @@ function Nav(){
     const {isOpen}=useContext(MenuContext);
     const {sectionOpen,setSectionOpen}=useContext(SectionContext);
     return (
-        <div className= {clsx(isOpen?"md:w-1/6":"hidden md:block","h-screen border-r-2 bg-slate-900  border-gray-600 p-1 md:p-2")} >
+        <div className= {clsx(isOpen?"md:w-1/6":"hidden md:block","h-screen border-r-2 bg-slate-900  border-blue-300 p-1 md:p-2")} >
                 <nav className="grid gap-2 ">
                 <Link className="" to="/">
-                    <button className={clsx("flex items-center p-2 md:p-3 rounded-md  hover:bg-gray-600  cursor-pointer w-full text-xs md:text-base",
-                        isOpen?"flex-col md:flex-row gap-1 md:gap-3":"flex-col justify-center",
-                        sectionOpen==="home"?"bg-gray-600":"")}
+                    <button className={clsx("flex items-center p-2 md:p-3 rounded-md  hover:bg-slate-700  cursor-pointer w-full  oswald-font",
+                        isOpen?"flex-col md:flex-row gap-1 md:gap-3 text-xs md:text-base":"flex-col justify-center text-xs",
+                        sectionOpen==="home"?"bg-slate-700":"")}
                             onClick={()=>setSectionOpen("home")}>
-                        <FaHome className="text-2xl md:text-3xl"/>Home
+                        <MdHome className="text-2xl md:text-3xl"/>Home
                     </button>
                 </Link>
 {/*                <Link className="" to="/explore">

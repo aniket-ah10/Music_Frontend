@@ -80,6 +80,7 @@ function Player(){
     const handleCurrentTimeChange=(e)=>{
         musicRef.current.currentTime = e.target.value;
         setCurrentTime(musicRef.current.currentTime);
+        console.log(navigator.mediaCapabilities);
     }
     const handleVolumeChange=(e)=>{
         musicRef.current.volume = e.target.value;
@@ -100,14 +101,14 @@ function Player(){
     return (
         <>
             {watchOpen||
-            <div className="fixed bottom-25 right-10">
-                <img className="w-25 h-25 md:w-50 md:h-50 rounded-lg" src={currentMusic.imgSrc} alt={currentMusic.title} />
+            <div className="fixed bottom-25 right-10" >
+                <img className="w-25 h-25 md:w-50 md:h-50 rounded-lg shadow-md shadow-gray-400 " src={currentMusic.imgSrc} alt={currentMusic.title} />
             </div>
             }
             {message.length!==0&&
-            <div className={"fixed bottom-25 left-2 bg-blue-950 border-r-2 border-white border-b-2 p-2 rounded-sm"}>
-                <p className="md:text-base text-xs">{message}</p>
-                <button className='bg-white text-blue-950  mx-auto mt-5 w-full  rounded-xl' onClick={()=>setMessage('')}>ok</button>
+            <div className={"fixed bottom-25 left-2 bg-neutral-800 border-1 border-neutral-600 p-4 rounded-sm"}>
+                <p className="md:text-sm text-xs sans-serif-font">{message}</p>
+                <button className='bg-white text-black  text-sm  mx-auto mt-5 w-1/3 p-1 rounded-l-full rounded-r-full sans-serif-font' onClick={()=>setMessage('')}>Ok</button>
             </div>
             }
             <div className="fixed bg-black bottom-0  w-full text-white h-18 grid ">
@@ -115,23 +116,25 @@ function Player(){
                        value={currentTime}
                        step={5}
                        max={duration}
-                       onChange={(e)=>handleCurrentTimeChange(e)}/>
+                       onChange={(e)=>handleCurrentTimeChange(e)}
+                       title={"Select duration"}
+                />
                 <audio src={currentMusic.songLink} ref={musicRef} onEnded={playNext}
                        onTimeUpdate={handleTimeUpdate}
                        onLoadedMetadata={() => setDuration(musicRef.current.duration)}>
                 </audio>
                 <div className="flex items-center py-1 px-5 gap-3">
                     <div className="flex items-center">
-                        <button className="p-1 rounded-full hover:bg-gray-700 cursor-pointer transition" onClick={playPrev} title={"Previous"}>
+                        <button className="p-1 rounded-full hover:bg-slate-700 cursor-pointer transition" onClick={playPrev} title={"Previous"}>
                         <IoPlaySkipBack className="text-3xl"/>
                         </button>
                         {isPlaying
-                            ?<button className="p-1 cursor-pointer rounded-full hover:bg-gray-700" onClick={pause} title={"Pause"}>
+                            ?<button className="p-1 cursor-pointer rounded-full hover:bg-slate-700" onClick={pause} title={"Pause"}>
                             <IoPause className="text-5xl "/></button>
-                            :<button className="p-1 cursor-pointer rounded-full hover:bg-gray-700" onClick={play} title={"Play"}>
+                            :<button className="p-1 cursor-pointer rounded-full hover:bg-slate-700" onClick={play} title={"Play"}>
                             <IoPlaySharp className="text-5xl"/></button>
                         }
-                        <button className="cursor-pointer hover:bg-gray-700 rounded-full p-1" onClick={playNext} title={"Next"}>
+                        <button className="cursor-pointer hover:bg-slate-700 rounded-full p-1" onClick={playNext} title={"Next"}>
                         <IoPlaySkipForward className="text-3xl"/>
                         </button>
                     </div>
@@ -141,11 +144,11 @@ function Player(){
                     <div className="md:flex items-center justify-center m-auto gap-4 hidden">
                         <img src={currentMusic.imgSrc} alt={currentMusic.alt} className="w-12 h-12 rounded-md"/>
                         <div className="grid">
-                        <p className="text-lg font-semibold">{currentMusic.title}</p>
-                        <p className="text-sm">{currentMusic.artist}</p>
+                        <p className="text-lg font-semibold text-blue-300">{currentMusic.title}</p>
+                        <p className="text-sm nunito-font text-neutral-300">{currentMusic.artist}</p>
                         </div>
                     </div>
-                    <div title={"Volume Bar"} className="md:flex items-center justify-center gap-2 hover:bg-gray-700 rounded-xl p-1 hidden" >
+                    <div title={"Volume Bar"} className="md:flex items-center justify-center gap-2 hover:bg-slate-700 rounded-l-full rounded-r-full p-1 hidden" >
                         {volume===0?<IoVolumeMute className='text-3xl'/>
                             :(volume<=0.33?<IoVolumeLow className='text-3xl'/>
                                 :(volume<=0.66?<IoVolumeMedium className='text-3xl'/>

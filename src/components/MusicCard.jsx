@@ -45,7 +45,7 @@ function MusicCard(props) {
     const[isMouseEnter, setIsMouseEnter] = useState(false);
     const[isMouseLeave, setIsMouseLeave] = useState(false);
     return (
-        <div className="flex flex-col gap-2 p-2 flex-shrink-0 relative wrap-anywhere bg-black rounded-md  shadow-sm shadow-gray-400 ">
+        <div className="flex flex-col gap-2 p-2 flex-shrink-0 relative wrap-anywhere bg-black rounded-md  shadow-sm shadow-blue-300 ">
         <div className="relative"
              onMouseEnter={()=>{
             setIsMouseEnter(true);
@@ -54,7 +54,7 @@ function MusicCard(props) {
                  setIsMouseLeave(true);
             setIsMouseEnter(false);}}>
             <img
-                className={"rounded-sm md:rounded-lg w-25 h-25 md:w-40 md:h-40 items-stretch shadow-sm shadow-gray-300 "}
+                className={"rounded-sm md:rounded-lg w-30 h-30 md:w-40 md:h-40 items-stretch shadow-sm shadow-gray-300 "}
                 src={props.imgSrc}
                  alt={props.imgAlt}/>
             {isMouseEnter && !isMouseLeave && (
@@ -82,10 +82,10 @@ function MusicCard(props) {
             )
             }
             </div>
-            <div className="grid ">
-                <p className="font-semibold  text-xs md:text-base">{props.title}</p>
+            <div className="grid">
+                <p className="text-sm md:text-base roboto-font ">{props.title}</p>
                 <div className="flex gap-2">
-                    <p className="text-xs md:text-sm">{props.artist}</p>
+                    <p className=" text-xs md:text-sm nunito-font text-neutral-300">{props.artist}</p>
                 </div>
             </div>
         </div>

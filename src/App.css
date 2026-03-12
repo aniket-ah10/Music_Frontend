@@ -1,2 +1,23 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
+.roboto-font{
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+}
+.orbitron-font{
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+.oswald-font{
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+    letter-spacing:0.1rem;
+}
+.nunito-font{
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
+}
+.sans-serif-font{
+    font-family:  sans-serif;
+}
