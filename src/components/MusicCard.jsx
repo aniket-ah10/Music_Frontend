@@ -45,21 +45,19 @@ function MusicCard(props) {
 
     const {currentIndex,setIsPlaying,setCurrentIndex} = useContext(MusicPlayerContext);
     const[isMouseEnter, setIsMouseEnter] = useState(false);
-    const[isMouseLeave, setIsMouseLeave] = useState(false);
     return (
         <div className="flex flex-col gap-2 p-2 flex-shrink-0 relative wrap-anywhere bg-gray-900 rounded-md  shadow-sm shadow-blue-300 ">
-        <div className="relative"
-             onMouseEnter={()=>{
-            setIsMouseEnter(true);
-            setIsMouseLeave(false);}}
-             onMouseLeave={()=>{
-                 setIsMouseLeave(true);
-            setIsMouseEnter(false);}}>
+            <div
+                className="relative"
+                onMouseEnter={() => setIsMouseEnter(true)}
+                onMouseLeave={() => setIsMouseEnter(false)}
+                onClick={() => setIsMouseEnter(prev => !prev)}
+            >
             <img
                 className={"rounded-sm md:rounded-lg w-30 h-30 md:w-40 md:h-40 items-stretch shadow-sm shadow-gray-300 "}
                 src={props.imgSrc}
                  alt={props.imgAlt}/>
-            {isMouseEnter && !isMouseLeave && (
+            {isMouseEnter && (
                 <div className="absolute top-0 left-0 w-full h-full bg-transparent-20 flex justify-center items-center">
                     {/* props.fav?
                         <button className="cursor-pointer" type="button" onClick={()=>handleLike()}>
