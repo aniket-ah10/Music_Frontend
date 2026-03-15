@@ -51,8 +51,11 @@ function MusicCard(props) {
                 className="relative"
                 onMouseEnter={() => setIsMouseEnter(true)}
                 onMouseLeave={() => setIsMouseEnter(false)}
-                onClick={() => setIsMouseEnter(prev => !prev)}
-            >
+                onClick={() => {const index = musicList.findIndex((i) => i.id === props.id);
+                    if (index !== -1) {
+                    setCurrentIndex(index);
+                    setIsPlaying(true);
+                }}}>
             <img
                 className={"rounded-sm md:rounded-lg w-30 h-30 md:w-40 md:h-40 items-stretch shadow-sm shadow-gray-300 "}
                 src={props.imgSrc}
@@ -67,13 +70,7 @@ function MusicCard(props) {
                             <MdOutlineFavoriteBorder className="text-white text-3xl top-2 right-2 p-1 absolute hover:bg-gray-600 rounded-full "></MdOutlineFavoriteBorder>
                         </button>
                     */}
-                    <button className="cursor-pointer" type="button" onClick={()=>
-                    {
-                        const index = musicList.findIndex((i) => i.id === props.id);
-                        if (index !== -1) {
-                                setCurrentIndex(index);
-                                setIsPlaying(true);
-                        }}}>
+                    <button className="cursor-pointer" type="button">
                         {currentIndex===props.id-1?
                             <IoVolumeHigh className="text-3xl md:text-5xl"></IoVolumeHigh>:
                             <FaPlay className="text-2xl md:text-4xl"></FaPlay>
