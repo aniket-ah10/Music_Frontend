@@ -1,6 +1,8 @@
 import { FaPlay } from "react-icons/fa";
 import {useContext, useEffect, useState} from "react";
 import {MusicListContext,MusicPlayerContext} from "../Hooks/globalHooks.jsx";
+import {IoVolumeHigh} from "react-icons/io5";
+
 //import axios from "axios";
 
 
@@ -41,11 +43,11 @@ function MusicCard(props) {
         });
     }*/}
 
-    const {setIsPlaying,setCurrentIndex} = useContext(MusicPlayerContext);
+    const {currentIndex,setIsPlaying,setCurrentIndex} = useContext(MusicPlayerContext);
     const[isMouseEnter, setIsMouseEnter] = useState(false);
     const[isMouseLeave, setIsMouseLeave] = useState(false);
     return (
-        <div className="flex flex-col gap-2 p-2 flex-shrink-0 relative wrap-anywhere bg-black rounded-md  shadow-sm shadow-blue-300 ">
+        <div className="flex flex-col gap-2 p-2 flex-shrink-0 relative wrap-anywhere bg-gray-900 rounded-md  shadow-sm shadow-blue-300 ">
         <div className="relative"
              onMouseEnter={()=>{
             setIsMouseEnter(true);
@@ -69,14 +71,15 @@ function MusicCard(props) {
                     */}
                     <button className="cursor-pointer" type="button" onClick={()=>
                     {
-                        const index = musicList.findIndex(
-                        (i) => i.id === props.id
-                        );
+                        const index = musicList.findIndex((i) => i.id === props.id);
                         if (index !== -1) {
                                 setCurrentIndex(index);
                                 setIsPlaying(true);
                         }}}>
-                        <FaPlay className="text-2xl md:text-4xl"></FaPlay>
+                        {currentIndex===props.id-1?
+                            <IoVolumeHigh className="text-3xl md:text-5xl"></IoVolumeHigh>:
+                            <FaPlay className="text-2xl md:text-4xl"></FaPlay>
+                        }
                     </button>
                 </div>
             )

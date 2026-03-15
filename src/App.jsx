@@ -16,10 +16,10 @@ import axios from "axios";
 
 
 function App() {
-    const[isOpen,setIsOpen]=useState(true);
+    const[isOpen,setIsOpen]=useState(false);
 
     const toggle =()=>{setIsOpen(!isOpen);};
-    const [sectionOpen,setSectionOpen]=useState("home");
+    const [sectionOpen,setSectionOpen]=useState("Home");
     const [musicList,setMusicList]=useState([]);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentIndex,setCurrentIndex]=useState(null);
@@ -46,12 +46,12 @@ function App() {
                 <Header/>
                 <div className={`${currentIndex===null?'bottom-0':'bottom-18'} flex top-14 left-0 fixed w-full`}>
                     <Nav/>
-                    <div className="flex-1 overflow-y-auto ">
+                    <div className="flex-1 overflow-y-auto">
                         <Routes>
                             <Route path="/" element={<Home/>}/>
                             {/*<Route path="/explore" element={<Explore/>}/>
-                            <Route path="/library" element={<Library/>}/>*/}
-                            <Route path="/addMusic" element={<AddMusic />}/>
+                            <Route path="/library" element={<Library/>}/>
+                            <Route path="/addMusic" element={<AddMusic />}/>*/}
                             <Route path="/watch"  element={<Watch/>}/>
                         </Routes>
                     </div>
