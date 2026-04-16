@@ -5,7 +5,7 @@ import {MusicListContext} from "../Hooks/globalHooks.jsx";
 function AddMusic(){
     const [musicList, setMusicList] = useContext(MusicListContext);
     const [formData, setFormData] = useState({title:"",imgSrc:"",imgAlt:"",songLink:"",artist:"",channelLink:"",channelName:""});
-    const url="https://musicbackend-production-7dc7.up.railway.app/api/MusicCard";
+    const url="https://music-backend-8ajw.onrender.com/api/MusicCard";
 
     const FetchList=()=>{
         axios.get(url).then(res=>

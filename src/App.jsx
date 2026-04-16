@@ -24,7 +24,7 @@ function App() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentIndex,setCurrentIndex]=useState(null);
 
-    const url = "https://musicbackend-production-7dc7.up.railway.app/api/MusicCard";
+    const url = "https://music-backend-8ajw.onrender.com";
     const FetchList=()=>{
         axios.get(url).then(res=>
         {

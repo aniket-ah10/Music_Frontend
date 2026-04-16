@@ -2,6 +2,8 @@ import { FaPlay } from "react-icons/fa";
 import {useContext, useEffect, useState} from "react";
 import {MusicListContext,MusicPlayerContext} from "../Hooks/globalHooks.jsx";
 import {IoVolumeHigh} from "react-icons/io5";
+import {MdOutlineFavoriteBorder,MdOutlineFavorite} from "react-icons/md";
+import axios from "axios";
 
 //import axios from "axios";
 
@@ -9,39 +11,34 @@ import {IoVolumeHigh} from "react-icons/io5";
 
 
 function MusicCard(props) {
-    const [musicList] = useContext(MusicListContext);
-    {/*const url = "http://localhost:8080/api/MusicCard";
+    const [musicList,setMusicList] = useContext(MusicListContext);
+    const url = "https://music-backend-8ajw.onrender.com";
 
-    const FetchId = () => {
+    /*const FetchId = () => {
         axios.get(`${url}/${props.id}`).then((res) => {
             console.log(res.data);
         }).catch((err) => {
             console.log(err);
         })
-    }
+    }*/
     const FetchList = () => {
         axios.get(url).then(res => {
             setMusicList(res.data);
         }).catch(err => console.log("not connected to the API", err));
     };
+
     useEffect(() => {
         FetchList();
     }, []);
 
-    const handleLike = () => {
-        const updatedFav = !props.fav;
-        const obj = {
-            fav: updatedFav
-        };
-        console.log("this is props", obj);
-        axios.patch(`http://localhost:8080/api/MusicCard/${props.id}`,
-            obj).then((res) => {
+    const handleLike = async () => {
+        await axios.put(`${url}/${props.id}`).then((res) => {
             console.log(res);
             FetchList();
         }).catch((err) => {
-            console.log(err)
+            console.log("error");
         });
-    }*/}
+    }
 
     const {currentIndex,setIsPlaying,setCurrentIndex} = useContext(MusicPlayerContext);
     const[isMouseEnter, setIsMouseEnter] = useState(false);
@@ -57,19 +54,19 @@ function MusicCard(props) {
                     setIsPlaying(true);
                 }}}>
             <img
-                className={"rounded-sm md:rounded-lg w-30 h-30 md:w-40 md:h-40 items-stretch shadow-sm shadow-gray-300 "}
+                className={"rounded-sm md:rounded-lg h-full w-full items-stretch shadow-sm shadow-gray-300 "}
                 src={props.imgSrc}
                  alt={props.imgAlt}/>
             {isMouseEnter && (
                 <div className="absolute top-0 left-0 w-full h-full bg-transparent-20 flex justify-center items-center">
-                    {/* props.fav?
+                    { props.fav?
                         <button className="cursor-pointer" type="button" onClick={()=>handleLike()}>
                             <MdOutlineFavorite className="text-white text-3xl top-2 right-2 p-1 absolute hover:bg-gray-600 rounded-full " ></MdOutlineFavorite>
                         </button>
                         :<button className="cursor-pointer" type="button" onClick={()=>handleLike()}>
                             <MdOutlineFavoriteBorder className="text-white text-3xl top-2 right-2 p-1 absolute hover:bg-gray-600 rounded-full "></MdOutlineFavoriteBorder>
                         </button>
-                    */}
+                    }
                     <button className="cursor-pointer" type="button">
                         {currentIndex===props.id-1?
                             <IoVolumeHigh className="text-3xl md:text-5xl"></IoVolumeHigh>:
