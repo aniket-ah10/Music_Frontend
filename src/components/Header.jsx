@@ -12,7 +12,7 @@ import axios from "axios";
 function Header() {
     const [musicList, setMusicList] = useContext(MusicListContext);
     const {isOpen,toggle}=useContext(MenuContext);
-    const url = "https://music-backend-8ajw.onrender.com";
+    const url = "https://music-backend-8ajw.onrender.com/api/MusicCard";
 
     const FetchList = () => {
         axios.get(url).then(res => {

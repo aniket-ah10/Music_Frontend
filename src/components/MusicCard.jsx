@@ -12,7 +12,7 @@ import axios from "axios";
 
 function MusicCard(props) {
     const [musicList,setMusicList] = useContext(MusicListContext);
-    const url = "https://music-backend-8ajw.onrender.com";
+    const url = "https://music-backend-8ajw.onrender.com/api/MusicCard";
 
     /*const FetchId = () => {
         axios.get(`${url}/${props.id}`).then((res) => {
